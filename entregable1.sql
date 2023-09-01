@@ -50,3 +50,34 @@ ALTER TABLE "students_courses" ADD FOREIGN KEY ("student") REFERENCES "users" ("
 ALTER TABLE "students_courses" ADD FOREIGN KEY ("course_id") REFERENCES "courses" ("CourseID");
 
 ALTER TABLE "categories" ADD FOREIGN KEY ("courseCategory_id") REFERENCES "courses" ("CourseID");
+
+INSERT INTO "roles" ("name")
+VALUES
+  ('Estudiante'),
+  ('Profesor');
+
+INSERT INTO "users" ("name", "email", "password", "age", "RoleID")
+VALUES
+  ('Usuario1', 'usuario1@example.com', 'contrasena1', 25, 1),
+  ('Profesor1', 'profesor1@example.com', 'contrasena_profesor1', 35, 2);
+
+
+INSERT INTO "courseVideos" ("Title", "Url")
+VALUES
+  ('Introducción al curso', 'https://www.example.com/intro_video'),
+  ('Lección 1: Conceptos básicos', 'https://www.example.com/lesson1_video');
+
+INSERT INTO "courses" ("Title", "Description", "Level", "Teacher", "courseVideos_id")
+VALUES
+  ('Curso de Matemáticas Avanzadas', 'Aprende matemáticas avanzadas.', 'Avanzado', 2, 1),
+  ('Curso de Programación en Python', 'Aprende a programar en Python.', 'Intermedio', 2, 2);
+
+INSERT INTO "students_courses" ("student", "course_id")
+VALUES
+  (1, 1),
+  (1, 2);
+
+INSERT INTO "categories" ("name", "courseCategory_id")
+VALUES
+  ('Matemáticas', 1),
+  ('Programación', 2);
